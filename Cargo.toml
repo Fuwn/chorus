@@ -1,0 +1,36 @@
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[package]
+name = "chorus"
+version = "0.1.1"
+authors = ["Fuwn <contact@fuwn.me>"]
+edition = "2021"
+description = "Cargo for COBOL"
+readme = "README.md"
+homepage = "https://github.com/Fuwn/chorus"
+repository = "https://github.com/Fuwn/chorus"
+license = "GPL-3.0-only"
+keywords = ["cobol"]
+categories = ["development-tools"]
+
+# Slower builds, faster executables
+[profile.release]
+codegen-units = 1
+lto = "fat"
+opt-level = 3
+panic = "abort"
+strip = true
+
+[dependencies]
+clap = { version = "3.1.14", features = ["derive"] } # CLI
+anyhow = "1.0.57" # `Result`
+unicode-xid = "0.2.3" # Unicode Standard Annex #31
+walkdir = "2.3.2" # Recursive directory walking
+config = "0.13.1" # Configuration
+lazy_static = "1.4.0" # Lazy constants
+shellfn = "0.1.1" # Shell execution
+path-slash = "0.1.4" # Path normalisation
+
+# Serialization
+serde = "1.0.137"
+serde_derive = "1.0.137"
